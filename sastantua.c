@@ -6,29 +6,14 @@
 /*   By: syeresko <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 19:31:32 by syeresko          #+#    #+#             */
-/*   Updated: 2019/08/12 19:49:53 by syeresko         ###   ########.fr       */
+/*   Updated: 2019/08/15 15:36:34 by syeresko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void		ft_putchar(char c);
 
-static int	compute_offset(int n)
-{
-	int const	k = (n + 1) / 2 - 1;
-
-	if (n == 1)
-	{
-		return (0);
-	}
-	if (n % 2)
-	{
-		return (k * (k + 3));
-	}
-	return (k * (k + 3) + k + 2);
-}
-
-int		g_m;
 int		g_c;
+int		g_m;
 int		g_left;
 int		g_right;
 
@@ -76,8 +61,8 @@ void		sastantua(int n)
 {
 	int		s;
 
-	g_m = n * (n + 5) / 2 + compute_offset(n);
 	g_c = (n - 1) / 2;
+	g_m = n * (n + 5) / 2 + g_c * (g_c + 3) + (n % 2 ? 0 : g_c + 2);
 	g_left = g_m - 1;
 	g_right = g_m + 1;
 	s = 1;
